@@ -5,11 +5,15 @@
  */
 package app;
 
+import classes.*;
+
 /**
  *
  * @author Eduardo
  */
 public class Player extends javax.swing.JFrame {
+    
+    App app = new App();
 
     /**
      * Creates new form Player
@@ -27,7 +31,7 @@ public class Player extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnPlay = new javax.swing.JButton();
+        btnPlayPause = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnPrevious = new javax.swing.JButton();
         pbSongProgress = new javax.swing.JProgressBar();
@@ -42,14 +46,29 @@ public class Player extends javax.swing.JFrame {
         btnNewPlaylist = new javax.swing.JButton();
         btnAddFile = new javax.swing.JButton();
         btnAddDirectory = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        btnStop = new javax.swing.JButton();
+        btnRepeat = new javax.swing.JButton();
+        mnuBar = new javax.swing.JMenuBar();
+        mnuFile = new javax.swing.JMenu();
+        mnuExit = new javax.swing.JMenuItem();
+        mnuUsers = new javax.swing.JMenu();
+        mnuNewUser = new javax.swing.JMenuItem();
+        mnuViewUsers = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Music Player");
+        setLocation(new java.awt.Point(0, 0));
+        setLocationByPlatform(true);
+        setName("Player"); // NOI18N
+        setResizable(false);
 
-        btnPlay.setText("P");
-        btnPlay.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnPlayPause.setText("P");
+        btnPlayPause.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnPlayPause.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnPlayPauseMouseReleased(evt);
+            }
+        });
 
         btnNext.setText("N");
         btnNext.setPreferredSize(new java.awt.Dimension(45, 45));
@@ -85,13 +104,43 @@ public class Player extends javax.swing.JFrame {
 
         btnAddDirectory.setText("Add Directory");
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        btnStop.setText("S");
+        btnStop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnStopMouseReleased(evt);
+            }
+        });
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        btnRepeat.setText("R");
 
-        setJMenuBar(jMenuBar1);
+        mnuFile.setText("File");
+
+        mnuExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        mnuExit.setText("Exit");
+        mnuExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuExitActionPerformed(evt);
+            }
+        });
+        mnuFile.add(mnuExit);
+
+        mnuBar.add(mnuFile);
+
+        mnuUsers.setText("Users");
+
+        mnuNewUser.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        mnuNewUser.setText("New user...");
+        mnuNewUser.setToolTipText("");
+        mnuUsers.add(mnuNewUser);
+
+        mnuViewUsers.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        mnuViewUsers.setText("View users");
+        mnuViewUsers.setToolTipText("");
+        mnuUsers.add(mnuViewUsers);
+
+        mnuBar.add(mnuUsers);
+
+        setJMenuBar(mnuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,15 +168,20 @@ public class Player extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(btnAddFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnAddDirectory, javax.swing.GroupLayout.Alignment.LEADING))))
-                    .addComponent(pbSongProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pbSongProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRepeat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPlayPause, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnStop)
+                .addGap(93, 93, 93))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,18 +208,39 @@ public class Player extends javax.swing.JFrame {
                                 .addComponent(btnAddDirectory)
                                 .addGap(50, 50, 50)
                                 .addComponent(btnNewPlaylist)))))
-                .addGap(27, 27, 27)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPlayPause, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                    .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnStop)
+                    .addComponent(btnRepeat))
+                .addGap(18, 18, 18)
                 .addComponent(pbSongProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuExitActionPerformed
+
+    private void btnStopMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStopMouseReleased
+        app.Stop();
+        btnPlayPause.setText("P");
+    }//GEN-LAST:event_btnStopMouseReleased
+
+    private void btnPlayPauseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayPauseMouseReleased
+        app.PlayPause("C:\\Users\\Eduardo\\Desktop\\Backstreet Boys- Greatest Hits- Mp3ViLLe\\01 Backstreet Boys - I Want It That Way.mp3");
+        if (app.playing){
+            btnPlayPause.setText("PA");
+        }
+        else{
+            btnPlayPause.setText("P");
+        }
+    }//GEN-LAST:event_btnPlayPauseMouseReleased
 
     /**
      * @param args the command line arguments
@@ -207,17 +282,22 @@ public class Player extends javax.swing.JFrame {
     private javax.swing.JButton btnAddFile;
     private javax.swing.JButton btnNewPlaylist;
     private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnPlay;
+    private javax.swing.JButton btnPlayPause;
     private javax.swing.JButton btnPrevious;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JButton btnRepeat;
+    private javax.swing.JButton btnStop;
     private javax.swing.JList<String> lbPlaylists;
     private javax.swing.JList<String> lbSongs;
     private javax.swing.JLabel lblPlaylists;
     private javax.swing.JLabel lblSongs;
     private javax.swing.JLabel lblUsersName;
     private javax.swing.JLabel lblUsersPhoto;
+    private javax.swing.JMenuBar mnuBar;
+    private javax.swing.JMenuItem mnuExit;
+    private javax.swing.JMenu mnuFile;
+    private javax.swing.JMenuItem mnuNewUser;
+    private javax.swing.JMenu mnuUsers;
+    private javax.swing.JMenuItem mnuViewUsers;
     private javax.swing.JProgressBar pbSongProgress;
     private javax.swing.JScrollPane spPlaylists;
     private javax.swing.JScrollPane spSongs;
