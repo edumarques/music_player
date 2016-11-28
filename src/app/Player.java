@@ -27,9 +27,9 @@ public class Player extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btPlay = new javax.swing.JButton();
-        btNext = new javax.swing.JButton();
-        btPrevious = new javax.swing.JButton();
+        btnPlay = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnPrevious = new javax.swing.JButton();
         pbSongProgress = new javax.swing.JProgressBar();
         spPlaylists = new javax.swing.JScrollPane();
         lbPlaylists = new javax.swing.JList<>();
@@ -39,23 +39,23 @@ public class Player extends javax.swing.JFrame {
         lblUsersName = new javax.swing.JLabel();
         lblPlaylists = new javax.swing.JLabel();
         lblSongs = new javax.swing.JLabel();
-        btNewPlaylist = new javax.swing.JButton();
-        btAddFile = new javax.swing.JButton();
-        btAddDirectory = new javax.swing.JButton();
+        btnNewPlaylist = new javax.swing.JButton();
+        btnAddFile = new javax.swing.JButton();
+        btnAddDirectory = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btPlay.setText("P");
-        btPlay.setPreferredSize(new java.awt.Dimension(60, 60));
+        btnPlay.setText("P");
+        btnPlay.setPreferredSize(new java.awt.Dimension(60, 60));
 
-        btNext.setText("N");
-        btNext.setPreferredSize(new java.awt.Dimension(45, 45));
+        btnNext.setText("N");
+        btnNext.setPreferredSize(new java.awt.Dimension(45, 45));
 
-        btPrevious.setText("PR");
-        btPrevious.setPreferredSize(new java.awt.Dimension(45, 45));
+        btnPrevious.setText("PR");
+        btnPrevious.setPreferredSize(new java.awt.Dimension(45, 45));
 
         lbPlaylists.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -79,11 +79,11 @@ public class Player extends javax.swing.JFrame {
 
         lblSongs.setText("Songs:");
 
-        btNewPlaylist.setText("New Playlist");
+        btnNewPlaylist.setText("New Playlist");
 
-        btAddFile.setText("Add File");
+        btnAddFile.setText("Add File");
 
-        btAddDirectory.setText("Add Directory");
+        btnAddDirectory.setText("Add Directory");
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -115,18 +115,18 @@ public class Player extends javax.swing.JFrame {
                             .addComponent(spSongs, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btNewPlaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNewPlaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btAddFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btAddDirectory, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(btnAddFile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddDirectory, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addComponent(pbSongProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(btPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -149,16 +149,16 @@ public class Player extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(spSongs, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btAddFile)
+                                .addComponent(btnAddFile)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btAddDirectory)
+                                .addComponent(btnAddDirectory)
                                 .addGap(50, 50, 50)
-                                .addComponent(btNewPlaylist)))))
+                                .addComponent(btnNewPlaylist)))))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addComponent(pbSongProgress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -203,12 +203,12 @@ public class Player extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAddDirectory;
-    private javax.swing.JButton btAddFile;
-    private javax.swing.JButton btNewPlaylist;
-    private javax.swing.JButton btNext;
-    private javax.swing.JButton btPlay;
-    private javax.swing.JButton btPrevious;
+    private javax.swing.JButton btnAddDirectory;
+    private javax.swing.JButton btnAddFile;
+    private javax.swing.JButton btnNewPlaylist;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPlay;
+    private javax.swing.JButton btnPrevious;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
