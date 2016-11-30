@@ -6,6 +6,9 @@
 package app;
 
 import classes.*;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -101,6 +104,16 @@ public class Player extends javax.swing.JFrame {
         btnNewPlaylist.setText("New Playlist");
 
         btnAddFile.setText("Add File");
+        btnAddFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAddFileMouseReleased(evt);
+            }
+        });
+        btnAddFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddFileActionPerformed(evt);
+            }
+        });
 
         btnAddDirectory.setText("Add Directory");
 
@@ -233,7 +246,7 @@ public class Player extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStopMouseReleased
 
     private void btnPlayPauseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayPauseMouseReleased
-        app.PlayPause("C:\\Users\\Eduardo\\Desktop\\Backstreet Boys- Greatest Hits- Mp3ViLLe\\01 Backstreet Boys - I Want It That Way.mp3");
+        app.PlayPause("C:\\Users\\Eduardo\\Desktop\\Musicas\\Músicas\\005. Calvin Harris feat. Rihanna - This Is What You Came For.mp3");
         if (app.playing){
             btnPlayPause.setText("PA");
         }
@@ -241,6 +254,26 @@ public class Player extends javax.swing.JFrame {
             btnPlayPause.setText("P");
         }
     }//GEN-LAST:event_btnPlayPauseMouseReleased
+
+    private void btnAddFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddFileActionPerformed
+
+    private void btnAddFileMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddFileMouseReleased
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("MP3 Files", "mp3", "mpeg3");
+        JFileChooser chooser = new JFileChooser("C:\\");
+        chooser.addChoosableFileFilter(filter);
+        
+        int returnVal = chooser.showOpenDialog(null);
+        
+        if (returnVal == JFileChooser.APPROVE_OPTION){
+            File myFile = chooser.getSelectedFile();
+            String song = myFile + "";
+            String name = chooser.getSelectedFile().getName();
+            //Display.setText(name);
+            app.PlayPause(song);
+        }
+    }//GEN-LAST:event_btnAddFileMouseReleased
 
     /**
      * @param args the command line arguments

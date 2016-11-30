@@ -25,36 +25,39 @@ public class App {
 
     public Player player;
     public boolean playing = false;
-    public long pauseLocation = 0;
+    public boolean first = true;
+    public long pauseLocation;
     public long songTotalLength;
 
     public void Stop() {
-        if (playing) {
             player.close();
             playing = false;
-        }
+            first = true;
+            pauseLocation = 0;
+            songTotalLength = 0;
     }
 
     public void PlayPause(String path) {
         if (playing == false) {
             try {
-                if (pauseLocation == 0) {
-                    FIS = new FileInputStream(path);
-                    BIS = new BufferedInputStream(FIS);
-                    player = new Player(BIS);
+                System.out.println("entrou if (playing false)");
+                FIS = new FileInputStream(path);
+                BIS = new BufferedInputStream(FIS);
+                player = new Player(BIS);
+                playing = true;
+                if (first) {
+                    System.out.println("entrou if (first true)");
                     songTotalLength = FIS.available();
-                    playing = true;
-                }
-                else{
+                    first = false;
+                } else {
+                    System.out.println("entrou else (first false)");
                     FIS.skip(songTotalLength - pauseLocation);
-                    playing = true;
                 }
             } catch (FileNotFoundException | JavaLayerException ex) {
 
             } catch (IOException ex) {
 
             }
-
             new Thread() {
                 @Override
                 public void run() {
@@ -67,9 +70,9 @@ public class App {
             }.start();
         } else {
             try {
-                
-                player.close();
+                System.out.println("entrou else (playing true)");
                 pauseLocation = FIS.available();
+                player.close();
                 playing = false;
             } catch (IOException ex) {
 

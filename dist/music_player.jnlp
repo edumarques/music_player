@@ -9,7 +9,7 @@
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="lib\jl1.0.jar" size="105446" download="eager" />
-    <jar href="music_player.jar" size="13457" download="eager" />
+    <jar href="music_player.jar" size="16165" download="eager" />
   </resources>
   <application-desc main-class="app.Player"  name="music_player" >
   </application-desc>
