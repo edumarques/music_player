@@ -15,7 +15,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Eduardo
  */
 public class Player extends javax.swing.JFrame {
-    
+
     App app = new App();
 
     /**
@@ -75,9 +75,19 @@ public class Player extends javax.swing.JFrame {
 
         btnNext.setText("N");
         btnNext.setPreferredSize(new java.awt.Dimension(45, 45));
+        btnNext.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnNextMouseReleased(evt);
+            }
+        });
 
         btnPrevious.setText("PR");
         btnPrevious.setPreferredSize(new java.awt.Dimension(45, 45));
+        btnPrevious.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnPreviousMouseReleased(evt);
+            }
+        });
 
         lbPlaylists.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -246,11 +256,10 @@ public class Player extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStopMouseReleased
 
     private void btnPlayPauseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlayPauseMouseReleased
-        app.PlayPause("C:\\Users\\Eduardo\\Desktop\\Musicas\\Músicas\\005. Calvin Harris feat. Rihanna - This Is What You Came For.mp3");
-        if (app.playing){
+        app.PlayPause(app.songLocationList.get(lbSongs.getSelectedIndex()));
+        if (app.playing) {
             btnPlayPause.setText("PA");
-        }
-        else{
+        } else {
             btnPlayPause.setText("P");
         }
     }//GEN-LAST:event_btnPlayPauseMouseReleased
@@ -260,20 +269,32 @@ public class Player extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddFileActionPerformed
 
     private void btnAddFileMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddFileMouseReleased
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("MP3 Files", "mp3", "mpeg3");
-        JFileChooser chooser = new JFileChooser("C:\\");
-        chooser.addChoosableFileFilter(filter);
-        
-        int returnVal = chooser.showOpenDialog(null);
-        
-        if (returnVal == JFileChooser.APPROVE_OPTION){
-            File myFile = chooser.getSelectedFile();
-            String song = myFile + "";
-            String name = chooser.getSelectedFile().getName();
-            //Display.setText(name);
-            app.PlayPause(song);
-        }
+        //String[] list = {app.addFile()};
+        app.addFile();
+        String songs[] = app.songNameList.toArray(new String[app.songNameList.size()]);
+        lbSongs.setListData(songs);
     }//GEN-LAST:event_btnAddFileMouseReleased
+
+    private void btnNextMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextMouseReleased
+        if (lbSongs.getSelectedIndex() + 1 < app.songLocationList.size()) {
+            lbSongs.setSelectedIndex(lbSongs.getSelectedIndex() + 1);
+        } else {
+            lbSongs.setSelectedIndex(0);
+        }
+        app.Stop();
+        app.PlayPause(app.songLocationList.get(lbSongs.getSelectedIndex()));
+    }//GEN-LAST:event_btnNextMouseReleased
+
+    private void btnPreviousMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPreviousMouseReleased
+        if (lbSongs.getSelectedIndex() - 1 >= 0) {
+            lbSongs.setSelectedIndex(lbSongs.getSelectedIndex() - 1);
+        }
+        else{
+            lbSongs.setSelectedIndex(app.songLocationList.size() - 1);
+        }
+        app.Stop();
+        app.PlayPause(app.songLocationList.get(lbSongs.getSelectedIndex()));
+    }//GEN-LAST:event_btnPreviousMouseReleased
 
     /**
      * @param args the command line arguments

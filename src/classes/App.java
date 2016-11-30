@@ -5,12 +5,18 @@
  */
 package classes;
 
+
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
@@ -28,6 +34,11 @@ public class App {
     public boolean first = true;
     public long pauseLocation;
     public long songTotalLength;
+    
+    public String fileName;
+    
+    public List<String> songLocationList = new ArrayList<String>();
+    public List<String> songNameList = new ArrayList<String>();
 
     public void Stop() {
             player.close();
@@ -40,17 +51,14 @@ public class App {
     public void PlayPause(String path) {
         if (playing == false) {
             try {
-                System.out.println("entrou if (playing false)");
                 FIS = new FileInputStream(path);
                 BIS = new BufferedInputStream(FIS);
                 player = new Player(BIS);
                 playing = true;
                 if (first) {
-                    System.out.println("entrou if (first true)");
                     songTotalLength = FIS.available();
                     first = false;
                 } else {
-                    System.out.println("entrou else (first false)");
                     FIS.skip(songTotalLength - pauseLocation);
                 }
             } catch (FileNotFoundException | JavaLayerException ex) {
@@ -70,7 +78,6 @@ public class App {
             }.start();
         } else {
             try {
-                System.out.println("entrou else (playing true)");
                 pauseLocation = FIS.available();
                 player.close();
                 playing = false;
@@ -79,5 +86,23 @@ public class App {
             }
         }
 
+    }
+    
+    public String addFile(){
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("MP3 Files", "mp3", "mpeg3");
+        JFileChooser chooser = new JFileChooser("C:\\Users\\Eduardo\\Desktop\\Musicas");
+        chooser.addChoosableFileFilter(filter);
+        
+        int returnVal = chooser.showOpenDialog(null);
+        
+        if (returnVal == JFileChooser.APPROVE_OPTION){
+            File myFile = chooser.getSelectedFile();
+            songLocationList.add(myFile + "");
+            String name = chooser.getSelectedFile().getName();
+            songNameList.add(name);
+            return fileName;
+        }else{
+            return null;
+        }
     }
 }

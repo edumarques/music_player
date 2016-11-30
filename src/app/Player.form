@@ -192,6 +192,9 @@
           <Dimension value="[45, 45]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNextMouseReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPrevious">
       <Properties>
@@ -200,6 +203,9 @@
           <Dimension value="[45, 45]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPreviousMouseReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JProgressBar" name="pbSongProgress">
     </Component>
