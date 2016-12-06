@@ -9,9 +9,9 @@
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="lib\jl1.0.jar" size="105446" download="eager" />
-    <jar href="music_player.jar" size="16840" download="eager" />
+    <jar href="music_player.jar" size="35668" download="eager" />
   </resources>
-  <applet-desc  width="800" height="600" main-class="app.Player"  name="music_player" >
+  <applet-desc  width="800" height="600" main-class="view.Login"  name="music_player" >
   </applet-desc>
   <update check="always"/>
 </jnlp>
